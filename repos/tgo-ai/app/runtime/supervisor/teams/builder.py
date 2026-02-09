@@ -271,6 +271,7 @@ class AgnoTeamBuilder:
             "add_history_to_context": config.get("add_history_to_context", True),
             "num_history_runs": config.get("num_history_runs", 5),
             "metadata": {"team_id": str(context.team.id)},
+            "telemetry": False,
         }
 
     def _build_team_tools(self, context: CoordinationContext) -> List[Any]:

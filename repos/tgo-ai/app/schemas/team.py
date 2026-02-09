@@ -1,7 +1,7 @@
 """Team-related Pydantic schemas."""
 
 import uuid
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import Field, field_validator
 
@@ -41,6 +41,11 @@ class TeamBase(BaseSchema):
     is_default: bool = Field(
         default=False,
         description="Whether this should be the default team (only one per project)",
+    )
+    config: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Team configuration (respond_directly, markdown, history runs, etc.)",
+        examples=[{"respond_directly": False, "markdown": True, "num_history_runs": 5}],
     )
 
 
@@ -89,6 +94,10 @@ class TeamUpdate(BaseSchema):
     llm_provider_id: Optional[uuid.UUID] = Field(
         default=None,
         description="Updated LLM provider (credentials) ID",
+    )
+    config: Optional[Dict[str, Any]] = Field(
+        default=None,
+        description="Updated team configuration (respond_directly, markdown, etc.)",
     )
 
 

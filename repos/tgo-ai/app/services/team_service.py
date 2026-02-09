@@ -48,6 +48,7 @@ class TeamService:
             session_id=team_data.session_id,
             is_default=team_data.is_default,
             llm_provider_id=team_data.llm_provider_id,
+            config=team_data.config,
         )
 
         self.db.add(team)
